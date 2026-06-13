@@ -1,247 +1,269 @@
-html
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>RANNUMNER - MEMBER ACCESS</title>
+<title>RANNUMNER</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--bg:#f5f5f7;
+--card:#ffffff;
+--text:#111111;
+--sub:#6e6e73;
+--line:#e5e5e7;
+--green:#22c55e;
+--shadow:0 8px 30px rgba(0,0,0,.06);
+}
+
+body.dark{
+--bg:#111315;
+--card:#1c1c1e;
+--text:#ffffff;
+--sub:#b3b3b8;
+--line:#2a2a2d;
+--shadow:none;
+}
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Prompt',sans-serif;
 }
 
 body{
-background:#050505;
-color:white;
-overflow-x:hidden;
+background:var(--bg);
+color:var(--text);
+transition:.3s;
 }
 
-/* LOGIN SCREEN */
-
-#loginPage{
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-background:
-radial-gradient(circle at top,
-#0c2b0c,
-#050505 60%);
-}
-
-.login-box{
-width:100%;
-max-width:420px;
-background:#0f0f0f;
-border:1px solid #1eff5a33;
-border-radius:25px;
-padding:35px;
-text-align:center;
-box-shadow:
-0 0 25px #00ff4430;
-}
-
-.logo{
-font-size:70px;
-font-weight:900;
-color:#00ff4c;
-text-shadow:
-0 0 15px #00ff4c;
-margin-bottom:10px;
-}
-
-.brand{
-font-size:34px;
-font-weight:bold;
-letter-spacing:2px;
-color:#00ff4c;
-}
-
-.member{
-font-size:14px;
-letter-spacing:4px;
-margin-top:5px;
-opacity:.8;
-margin-bottom:25px;
-}
-
-.input-box{
-margin-bottom:15px;
-}
-
-.input-box input{
-width:100%;
-padding:16px;
-border:none;
-border-radius:14px;
-background:#151515;
-color:white;
-font-size:16px;
-outline:none;
-border:1px solid #1b1b1b;
-}
-
-.input-box input:focus{
-border:1px solid #00ff4c;
-box-shadow:
-0 0 15px #00ff4c40;
-}
-
-.login-btn{
-width:100%;
-padding:16px;
-border:none;
-border-radius:14px;
-background:#00ff4c;
-color:black;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-margin-top:10px;
-}
-
-.register-btn{
-width:100%;
-padding:15px;
-border:none;
-border-radius:14px;
-background:#111;
-color:#00ff4c;
-font-size:16px;
-cursor:pointer;
-margin-top:12px;
-border:1px solid #00ff4c;
-}
-
-.package{
-margin-top:20px;
-background:#111;
-padding:20px;
-border-radius:18px;
-text-align:left;
-}
-
-.package h3{
-margin-bottom:12px;
-color:#00ff4c;
-}
-
-.package p{
-margin:8px 0;
-font-size:15px;
-}
-
-/* APP */
-
-#app{
-display:none;
+.container{
+max-width:1180px;
+margin:auto;
 padding:25px;
 }
 
 .topbar{
-text-align:center;
-margin-bottom:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
 }
 
-.topbar h1{
-font-size:34px;
-color:#00ff4c;
-text-shadow:
-0 0 15px #00ff4c;
+.logo-box{
+display:flex;
+align-items:center;
+gap:15px;
 }
 
-.topbar p{
-opacity:.7;
-margin-top:5px;
+.logo{
+width:58px;
+height:58px;
+border-radius:18px;
+background:linear-gradient(
+135deg,
+#22c55e,
+#16a34a
+);
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+font-size:24px;
+color:#fff;
 }
 
-textarea{
+.brand h1{
+font-size:28px;
+font-weight:700;
+}
+
+.brand p{
+font-size:14px;
+color:var(--sub);
+letter-spacing:2px;
+}
+
+.theme-btn{
+border:none;
+background:var(--card);
+border:1px solid var(--line);
+width:52px;
+height:52px;
+border-radius:18px;
+cursor:pointer;
+font-size:22px;
+box-shadow:var(--shadow);
+}
+
+.login-card{
+max-width:520px;
+margin:auto;
+background:var(--card);
+padding:35px;
+border-radius:34px;
+box-shadow:var(--shadow);
+border:1px solid var(--line);
+}
+
+.login-card h2{
+font-size:28px;
+margin-bottom:5px;
+}
+
+.login-card p{
+color:var(--sub);
+margin-bottom:25px;
+}
+
+.input{
+width:100%;
+padding:18px;
+border-radius:18px;
+border:1px solid var(--line);
+background:transparent;
+font-size:16px;
+margin-bottom:14px;
+outline:none;
+color:var(--text);
+}
+
+.btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:20px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.2s;
+}
+
+.login-btn{
+background:#111;
+color:#fff;
+margin-bottom:10px;
+}
+
+body.dark .login-btn{
+background:#fff;
+color:#111;
+}
+
+.line-btn{
+background:#22c55e;
+color:#fff;
+}
+
+.package-box{
+margin-top:25px;
+background:var(--bg);
+border-radius:24px;
+padding:22px;
+border:1px solid var(--line);
+}
+
+.package-box h3{
+margin-bottom:15px;
+}
+
+.package{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid var(--line);
+}
+
+.package:last-child{
+border-bottom:none;
+}
+
+#app{
+display:none;
+}
+
+.input-number{
 width:100%;
 height:120px;
-background:#101010;
-border:1px solid #00ff4c33;
-border-radius:18px;
+border-radius:28px;
 padding:20px;
-color:white;
-font-size:38px;
-text-align:center;
-resize:none;
+font-size:42px;
+border:1px solid var(--line);
+background:var(--card);
+color:var(--text);
 outline:none;
-margin-top:20px;
+resize:none;
+box-shadow:var(--shadow);
+text-align:center;
 }
 
-.button-group{
+.action{
 display:flex;
 gap:12px;
-margin:20px 0;
-flex-wrap:wrap;
+margin:20px 0 28px;
 }
 
-.button-group button{
+.action button{
 flex:1;
-padding:16px;
+padding:18px;
 border:none;
-border-radius:14px;
+border-radius:22px;
 cursor:pointer;
-font-size:18px;
-font-weight:bold;
+font-size:16px;
+font-weight:600;
 }
 
 .reset{
-background:#222;
-color:white;
+background:#ef4444;
+color:#fff;
 }
 
-.calculate{
-background:#00ff4c;
-color:black;
+.calc{
+background:#22c55e;
+color:#fff;
 }
 
 .grid{
 display:grid;
 grid-template-columns:
 repeat(2,1fr);
-gap:18px;
+gap:20px;
 }
 
 .card{
-background:#111;
-padding:18px;
-border-radius:18px;
-border:1px solid #1eff5a22;
+background:var(--card);
+border-radius:28px;
+padding:24px;
+box-shadow:var(--shadow);
+border:1px solid var(--line);
 }
 
-.card h2{
-margin-bottom:12px;
-color:#00ff4c;
-font-size:22px;
+.card h3{
+margin-bottom:15px;
 }
 
 .result{
-background:#050505;
-padding:14px;
-border-radius:14px;
+background:var(--bg);
+border-radius:18px;
+padding:18px;
 min-height:90px;
-margin-bottom:12px;
-font-size:18px;
-word-wrap:break-word;
+margin-bottom:14px;
+word-break:break-word;
 }
 
-.copy-btn{
+.copy{
 width:100%;
 padding:14px;
-background:#00ff4c;
 border:none;
-border-radius:12px;
-font-weight:bold;
+border-radius:16px;
+background:#22c55e;
+color:#fff;
 cursor:pointer;
 }
 
@@ -251,68 +273,101 @@ cursor:pointer;
 grid-template-columns:1fr;
 }
 
-textarea{
-font-size:28px;
+.input-number{
+font-size:30px;
 }
 
 }
 
 </style>
 </head>
-
 <body>
 
-  html id="w95j7s"
-<!-- LOGIN PAGE -->
+<div class="container">
+
+<div class="topbar">
+
+<div class="logo-box">
+
+<div class="logo">
+RN
+</div>
+
+<div class="brand">
+<h1>RANNUMNER</h1>
+<p>MEMBER ACCESS</p>
+</div>
+
+</div>
+
+<button
+class="theme-btn"
+onclick="toggleTheme()">
+🌙
+</button>
+
+</div>
+```html id="g7f6pz"
+<!-- LOGIN -->
 
 <div id="loginPage">
 
-<div class="login-box">
+<div class="login-card">
 
-<div class="logo">RN</div>
+<h2>Welcome Back</h2>
 
-<div class="brand">
+<p>
+เข้าสู่ระบบสมาชิก
 RANNUMNER
-</div>
+</p>
 
-<div class="member">
-MEMBER ACCESS
-</div>
-
-<div class="input-box">
 <input
 type="text"
+class="input"
 id="username"
 placeholder="Username">
-</div>
 
-<div class="input-box">
 <input
 type="password"
+class="input"
 id="password"
 placeholder="Password">
-</div>
 
 <button
-class="login-btn"
+class="btn login-btn"
 onclick="login()">
-LOGIN
+Login
 </button>
 
 <button
-class="register-btn"
+class="btn line-btn"
 onclick="openLine()">
 สมัครสมาชิก
 </button>
 
+<div class="package-box">
+
+<h3>Membership</h3>
+
 <div class="package">
+<span>1 เดือน</span>
+<strong>159฿</strong>
+</div>
 
-<h3>MEMBERSHIP</h3>
+<div class="package">
+<span>3 เดือน</span>
+<strong>399฿</strong>
+</div>
 
-<p>1 เดือน — 159฿</p>
-<p>3 เดือน — 399฿</p>
-<p>5 เดือน — 599฿</p>
-<p>1 ปี — 1,290฿</p>
+<div class="package">
+<span>5 เดือน</span>
+<strong>599฿</strong>
+</div>
+
+<div class="package">
+<span>1 ปี</span>
+<strong>1,290฿</strong>
+</div>
 
 </div>
 
@@ -324,16 +379,12 @@ onclick="openLine()">
 
 <div id="app">
 
-<div class="topbar">
-<h1>RANNUMNER</h1>
-<p>MEMBER ACCESS</p>
-</div>
-
 <textarea
 id="numberInput"
+class="input-number"
 placeholder="ใส่ตัวเลข"></textarea>
 
-<div class="button-group">
+<div class="action">
 
 <button
 class="reset"
@@ -342,7 +393,7 @@ onclick="resetData()">
 </button>
 
 <button
-class="calculate"
+class="calc"
 onclick="calculate()">
 คำนวณ
 </button>
@@ -352,52 +403,56 @@ onclick="calculate()">
 <div class="grid">
 
 <div class="card">
-<h2>2 ตัวปกติ</h2>
+<h3>2 ตัวปกติ</h3>
 <div
 class="result"
-id="twoNormal"></div>
+id="twoNormal">
+</div>
 
 <button
-class="copy-btn"
+class="copy"
 onclick="copyText('twoNormal')">
 คัดลอก
 </button>
 </div>
 
 <div class="card">
-<h2>2 ตัวรวมเบิ้ล</h2>
+<h3>2 ตัวรวมเบิ้ล</h3>
 <div
 class="result"
-id="twoDouble"></div>
+id="twoDouble">
+</div>
 
 <button
-class="copy-btn"
+class="copy"
 onclick="copyText('twoDouble')">
 คัดลอก
 </button>
 </div>
 
 <div class="card">
-<h2>3 ตัวปกติ</h2>
+<h3>3 ตัวปกติ</h3>
 <div
 class="result"
-id="threeNormal"></div>
+id="threeNormal">
+</div>
 
 <button
-class="copy-btn"
+class="copy"
 onclick="copyText('threeNormal')">
 คัดลอก
 </button>
 </div>
 
 <div class="card">
-<h2>3 ตัวรวมตอง</h2>
+<h3>3 ตัวรวมตอง</h3>
 <div
 class="result"
-id="threeSpecial"></div>
+id="threeSpecial">
+</div>
 
 <button
-class="copy-btn"
+class="copy"
 onclick="copyText('threeSpecial')">
 คัดลอก
 </button>
@@ -406,7 +461,7 @@ onclick="copyText('threeSpecial')">
 </div>
 
 </div>
-html id="6dq5ur"
+```html id="3kqs8w"
 <script>
 
 /* USERS */
@@ -429,53 +484,42 @@ expire:"2026-10-10"
 
 function login(){
 
-let username =
+const username =
 document.getElementById(
 'username'
-).value;
+).value.trim();
 
-let password =
+const password =
 document.getElementById(
 'password'
-).value;
+).value.trim();
 
 if(!users[username]){
-
-alert(
-'ไม่พบผู้ใช้งาน'
-);
-
+alert('ไม่พบผู้ใช้งาน');
 return;
 }
 
 if(
 users[username]
-.password
-!== password
+.password !== password
 ){
-
-alert(
-'รหัสผ่านไม่ถูกต้อง'
-);
-
+alert('รหัสผ่านไม่ถูกต้อง');
 return;
 }
 
-let today =
+const today =
 new Date();
 
-let expire =
+const expire =
 new Date(
 users[username]
 .expire
 );
 
 if(today > expire){
-
 alert(
 'สมาชิกหมดอายุ กรุณาต่ออายุ'
 );
-
 return;
 }
 
@@ -491,7 +535,7 @@ document.getElementById(
 
 }
 
-/* OPEN LINE */
+/* LINE OA */
 
 function openLine(){
 
@@ -502,17 +546,39 @@ window.open(
 
 }
 
+/* DARK MODE */
+
+function toggleTheme(){
+
+document.body
+.classList
+.toggle('dark');
+
+}
+
 /* CALCULATE */
 
 function calculate(){
 
 let num =
-document.getElementById(
+document
+.getElementById(
 'numberInput'
-).value
+)
+.value
 .replace(/\s/g,'');
 
-let twoNormal = [];
+if(num.length < 2){
+alert(
+'กรุณาใส่ตัวเลข'
+);
+return;
+}
+
+/* 2 ตัว */
+
+let twoNormal =
+[];
 
 for(
 let i=0;
@@ -527,26 +593,33 @@ j++
 ){
 
 twoNormal.push(
-num[i] +
-num[j]
+num[i]+num[j]
 );
 
 }
 
 }
 
-let doubles = [
-'00','11','22',
-'33','44','55',
-'66','77','88',
-'99'
+/* เบิ้ล */
+
+const doubles = [
+
+'00','11',
+'22','33',
+'44','55',
+'66','77',
+'88','99'
+
 ];
 
 let twoDouble =
+
 [
 ...doubles,
 ...twoNormal
 ];
+
+/* 3 ตัว */
 
 let threeNormal =
 [];
@@ -570,9 +643,11 @@ k++
 ){
 
 threeNormal.push(
+
 num[i]+
 num[j]+
 num[k]
+
 );
 
 }
@@ -581,31 +656,59 @@ num[k]
 
 }
 
-let tong = [
-'000','111','222',
-'333','444','555',
-'666','777','888',
+/* ตอง */
+
+const tong = [
+
+'000',
+'111',
+'222',
+'333',
+'444',
+'555',
+'666',
+'777',
+'888',
 '999'
+
 ];
 
-document.getElementById(
+document
+.getElementById(
 'twoNormal'
-).innerText =
-twoNormal.join(' ');
+)
+.innerText =
 
-document.getElementById(
+twoNormal.join(
+' '
+);
+
+document
+.getElementById(
 'twoDouble'
-).innerText =
-twoDouble.join(' ');
+)
+.innerText =
 
-document.getElementById(
+twoDouble.join(
+' '
+);
+
+document
+.getElementById(
 'threeNormal'
-).innerText =
-threeNormal.join(' ');
+)
+.innerText =
 
-document.getElementById(
+threeNormal.join(
+' '
+);
+
+document
+.getElementById(
 'threeSpecial'
-).innerText =
+)
+.innerText =
+
 [
 ...tong,
 ...threeNormal
@@ -617,25 +720,35 @@ document.getElementById(
 
 function resetData(){
 
-document.getElementById(
+document
+.getElementById(
 'numberInput'
-).value='';
+)
+.value='';
 
-document.getElementById(
+document
+.getElementById(
 'twoNormal'
-).innerText='';
+)
+.innerText='';
 
-document.getElementById(
+document
+.getElementById(
 'twoDouble'
-).innerText='';
+)
+.innerText='';
 
-document.getElementById(
+document
+.getElementById(
 'threeNormal'
-).innerText='';
+)
+.innerText='';
 
-document.getElementById(
+document
+.getElementById(
 'threeSpecial'
-).innerText='';
+)
+.innerText='';
 
 }
 
@@ -643,11 +756,14 @@ document.getElementById(
 
 function copyText(id){
 
-let text =
-document.getElementById(id)
+const text =
+
+document
+.getElementById(id)
 .innerText;
 
-navigator.clipboard
+navigator
+.clipboard
 .writeText(text);
 
 alert(
@@ -657,6 +773,8 @@ alert(
 }
 
 </script>
+
+</div>
 
 </body>
 </html>

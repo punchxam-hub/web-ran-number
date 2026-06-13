@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>เว็บตะรันเลข</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#efefef;
+    font-family:Arial, sans-serif;
+    padding:20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* ช่องใส่เลข */
+textarea{
+    width:100%;
+    height:110px;
+    border:3px solid #333;
+    border-radius:12px;
+    font-size:48px;
+    text-align:center;
+    padding:20px;
+    resize:none;
+    outline:none;
+}
+
+/* ปุ่ม */
+.button-group{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:20px 0 35px;
+}
+
+button{
+    border:none;
+    border-radius:8px;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    padding:15px 28px;
+    cursor:pointer;
+}
+
+.reset{
+    background:#f25f5f;
+}
+
+.calculate{
+    background:#3ca55c;
+}
+
+.pin{
+    background:#8b5cf6;
+}
+
+/* card */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.card{
+    background:#f4f4f4;
+    border:1px solid #ccc;
+    border-radius:15px;
+    padding:20px;
+}
+
+.card h2{
+    margin:0 0 15px;
+    font-size:28px;
+    color:#1f3654;
+}
+
+.result{
+    min-height:90px;
+    background:white;
+    border:1px solid #ddd;
+    padding:12px;
+    border-radius:8px;
+    font-size:24px;
+    margin-bottom:12px;
+    word-wrap:break-word;
+}
+
+.copy-btn{
+    width:100%;
+    background:#4dbb74;
+    border:2px solid #222;
+    font-size:22px;
+}
+
+/* มือถือ */
+@media(max-width:768px){
+
+.grid{
+    grid-template-columns:1fr;
+}
+
+textarea{
+    font-size:36px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<textarea
+id="numberInput"
+placeholder="ใส่ตัวเลข"></textarea>
+
+<div class="button-group">
+
+<button class="reset"
+onclick="resetData()">
+เริ่มใหม่
+</button>
+
+<button class="calculate"
+onclick="calculate()">
+คำนวณ
+</button>
+
+<button class="pin">
+ปักหลัก ▼
+</button>
+
+</div>
+
+<div class="grid">
+
+<!-- 2 ตัวปกติ -->
+<div class="card">
+<h2>2 ตัวปกติ</h2>
+
+<div class="result"
+id="twoNormal"></div>
+
+<button class="copy-btn"
+onclick="copyText('twoNormal')">
+คัดลอก
+</button>
+</div>
+
+<!-- 2 ตัวรวมเบิ้ล -->
+<div class="card">
+<h2>2 ตัวรวมเบิ้ล</h2>
+
+<div class="result"
+id="twoDouble"></div>
+
+<button class="copy-btn"
+onclick="copyText('twoDouble')">
+คัดลอก
+</button>
+</div>
+
+<!-- 3 ตัวปกติ -->
+<div class="card">
+<h2>3 ตัวปกติ</h2>
+
+<div class="result"
+id="threeNormal"></div>
+
+<button class="copy-btn"
+onclick="copyText('threeNormal')">
+คัดลอก
+</button>
+</div>
+
+<!-- 3 ตัวรวมตอง -->
+<div class="card">
+<h2>3 ตัวรวมตองรวมหาม</h2>
+
+<div class="result"
+id="threeSpecial"></div>
+
+<button class="copy-btn"
+onclick="copyText('threeSpecial')">
+คัดลอก
+</button>
+</div>
+
+<!-- 3 ตัวรวมหาม -->
+<div class="card">
+<h2>3 ตัวรวมหาม</h2>
+
+<div class="result"
+id="threeHam"></div>
+
+<button class="copy-btn"
+onclick="copyText('threeHam')">
+คัดลอก
+</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+let num =
+document.getElementById("numberInput")
+.value
+.replace(/\s/g,'');
+
+if(num.length < 2){
+alert("กรุณาใส่เลข");
+return;
+}
+
+/* 2 ตัวปกติ */
+let twoNormal = [];
+
+for(let i=0;i<num.length;i++){
+
+for(let j=i+1;j<num.length;j++){
+
+twoNormal.push(
+num[i] + num[j]
+);
+
+}
+
+}
+
+/* 2 ตัวรวมเบิ้ล */
+let doubles = [
+'00','11','22',
+'33','44','55',
+'66','77','88','99'
+];
+
+let twoDouble =
+[...doubles,...twoNormal];
+
+/* 3 ตัว */
+let threeNormal = [];
+
+for(let i=0;i<num.length;i++){
+
+for(let j=i+1;j<num.length;j++){
+
+for(let k=j+1;k<num.length;k++){
+
+threeNormal.push(
+num[i] +
+num[j] +
+num[k]
+);
+
+}
+
+}
+
+}
+
+/* ตอง */
+let tong = [
+'000','111','222',
+'333','444','555',
+'666','777','888',
+'999'
+];
+
+let threeSpecial =
+[...tong,...threeNormal];
+
+document.getElementById(
+'twoNormal'
+).innerText =
+twoNormal.join(' ');
+
+document.getElementById(
+'twoDouble'
+).innerText =
+twoDouble.join(' ');
+
+document.getElementById(
+'threeNormal'
+).innerText =
+threeNormal.join(' ');
+
+document.getElementById(
+'threeSpecial'
+).innerText =
+threeSpecial.join(' ');
+
+document.getElementById(
+'threeHam'
+).innerText =
+threeNormal.join(' ');
+
+}
+
+/* รีเซ็ต */
+function resetData(){
+
+document.getElementById(
+'numberInput'
+).value='';
+
+document.getElementById(
+'twoNormal'
+).innerText='';
+
+document.getElementById(
+'twoDouble'
+).innerText='';
+
+document.getElementById(
+'threeNormal'
+).innerText='';
+
+document.getElementById(
+'threeSpecial'
+).innerText='';
+
+document.getElementById(
+'threeHam'
+).innerText='';
+
+}
+
+/* คัดลอก */
+function copyText(id){
+
+let text =
+document.getElementById(id)
+.innerText;
+
+navigator.clipboard
+.writeText(text);
+
+alert("คัดลอกแล้ว");
+}
+
+</script>
+
+</body>
+</html>

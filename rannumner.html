@@ -804,6 +804,55 @@ alert(
 );
 
 }
+  
+```javascript
+async function scanImage(){
+
+const file =
+
+document
+.getElementById(
+'imageInput'
+)
+.files[0];
+
+if(!file) return;
+
+document
+.getElementById(
+'scanStatus'
+)
+.innerText =
+'กำลังสแกนเลข...';
+
+const result =
+
+await Tesseract
+.recognize(
+file,
+'eng'
+);
+
+const text =
+
+result.data.text
+.replace(/\D/g,'');
+
+document
+.getElementById(
+'numberInput'
+)
+.value = text;
+
+document
+.getElementById(
+'scanStatus'
+)
+.innerText =
+'สแกนสำเร็จ ✅';
+
+}
+```
 
 </script>
 
